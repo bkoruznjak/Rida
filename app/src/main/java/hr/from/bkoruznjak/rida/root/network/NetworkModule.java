@@ -14,7 +14,7 @@ import javax.inject.Named;
 import dagger.Module;
 import dagger.Provides;
 import hr.from.bkoruznjak.rida.root.AppScope;
-import hr.from.bkoruznjak.rida.root.RideApp;
+import hr.from.bkoruznjak.rida.root.RidaApp;
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -36,7 +36,7 @@ public class NetworkModule {
 
     @Provides
     @AppScope
-    public Cache provideOkHttpCache(RideApp application) {
+    public Cache provideOkHttpCache(RidaApp application) {
         int cacheSize = 2 * 1024; // 2 MB
         Cache cache = new Cache(application.getCacheDir(), cacheSize);
         return cache;
@@ -126,7 +126,7 @@ public class NetworkModule {
 
     @Provides
     @AppScope
-    public ConnectivityManager provideConnectivityManager(RideApp context) {
+    public ConnectivityManager provideConnectivityManager(RidaApp context) {
         return (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
     }
 

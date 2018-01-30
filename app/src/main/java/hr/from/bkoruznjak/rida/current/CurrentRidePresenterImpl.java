@@ -15,7 +15,7 @@ import hr.from.bkoruznjak.rida.current.contract.CurrentRideView;
 import hr.from.bkoruznjak.rida.current.model.RideStatus;
 import hr.from.bkoruznjak.rida.root.AppComponent;
 import hr.from.bkoruznjak.rida.root.Constants;
-import hr.from.bkoruznjak.rida.root.database.RideDatabase;
+import hr.from.bkoruznjak.rida.root.database.RidaDatabase;
 
 import static hr.from.bkoruznjak.rida.root.Constants.NO_ANIMATION;
 
@@ -26,7 +26,7 @@ import static hr.from.bkoruznjak.rida.root.Constants.NO_ANIMATION;
 public class CurrentRidePresenterImpl implements CurrentRidePresenter, LifecycleOwner {
 
     @Inject
-    RideDatabase database;
+    RidaDatabase database;
     @Inject
     CurrentRideSession currentRideSession;
     private LifecycleRegistry mLifecycleRegistry;

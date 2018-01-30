@@ -7,7 +7,7 @@ import android.util.Log;
 import hr.from.bkoruznjak.rida.current.contract.CurrentRideRepository;
 import hr.from.bkoruznjak.rida.current.model.Ride;
 import hr.from.bkoruznjak.rida.current.model.RidePoint;
-import hr.from.bkoruznjak.rida.root.database.RideDatabase;
+import hr.from.bkoruznjak.rida.root.database.RidaDatabase;
 
 /**
  * Created by bkoruznjak on 30/01/2018.
@@ -15,9 +15,9 @@ import hr.from.bkoruznjak.rida.root.database.RideDatabase;
 
 public class CurrentRideRoomRepository implements CurrentRideRepository {
 
-    private RideDatabase mDatabase;
+    private RidaDatabase mDatabase;
 
-    public CurrentRideRoomRepository(RideDatabase database) {
+    public CurrentRideRoomRepository(RidaDatabase database) {
         mDatabase = database;
     }
 
@@ -47,8 +47,29 @@ public class CurrentRideRoomRepository implements CurrentRideRepository {
         }).start();
     }
 
+    /**
+     * CALL OF THE UI THREAD
+     *
+     * @param ridePoint
+     * @return ridePointId
+     */
+    @Override
+    public long saveRidePointSync(@NonNull RidePoint ridePoint) {
+        return mDatabase.ridePointDao().insertRidePoint(ridePoint);
+    }
+
     @Override
     public void updateRidePoint(@NonNull RidePoint ridePoint) {
         new Thread(() -> mDatabase.ridePointDao().updateRidePoint(ridePoint)).start();
+    }
+
+    /**
+     * CALL OF THE UI THREAD
+     *
+     * @param ridePoint
+     */
+    @Override
+    public void updateRidePointSync(@NonNull RidePoint ridePoint) {
+        mDatabase.ridePointDao().updateRidePoint(ridePoint);
     }
 }

@@ -29,7 +29,7 @@ import hr.from.bkoruznjak.rida.databinding.ActivityMainBinding;
 import hr.from.bkoruznjak.rida.main.contract.MainPresenter;
 import hr.from.bkoruznjak.rida.main.contract.MainView;
 import hr.from.bkoruznjak.rida.root.PageAdapter;
-import hr.from.bkoruznjak.rida.root.RideApp;
+import hr.from.bkoruznjak.rida.root.RidaApp;
 
 import static hr.from.bkoruznjak.rida.root.Constants.LOCATION_PERMISSION_ID;
 
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements MainView, Navigat
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        mPresenter = new MainPresenterImpl(this, ((RideApp) getApplication()).getAppComponent());
+        mPresenter = new MainPresenterImpl(this, ((RidaApp) getApplication()).getAppComponent());
     }
 
     @Override

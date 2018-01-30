@@ -14,9 +14,9 @@ import retrofit2.http.Query;
 
 public interface RidaWebAPI {
 
-    String BASE_URL = "https://test.mother.i-ways.hr";
+    String BASE_URL = "http://test.mother.i-ways.hr";
 
-    @POST
+    @POST("./")
     Call<JsonObject> sendRideInfo(
             @Query("json") int json,
             @Body RidePoint rideInfoObject);

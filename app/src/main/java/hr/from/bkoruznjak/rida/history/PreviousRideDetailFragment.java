@@ -17,7 +17,7 @@ import hr.from.bkoruznjak.rida.current.model.RidePoint;
 import hr.from.bkoruznjak.rida.databinding.FragmentPreviousRideDetailBinding;
 import hr.from.bkoruznjak.rida.history.contract.RideDetailView;
 import hr.from.bkoruznjak.rida.root.Constants;
-import hr.from.bkoruznjak.rida.root.RideApp;
+import hr.from.bkoruznjak.rida.root.RidaApp;
 
 import static hr.from.bkoruznjak.rida.current.CurrentRideSession.NO_DATABASE_ID_ASSIGNED;
 
@@ -49,7 +49,7 @@ public class PreviousRideDetailFragment extends Fragment implements RideDetailVi
     }
 
     private void init() {
-        mPresenter = new PreviousRideDetailPresenter(this, ((RideApp) getActivity().getApplicationContext()).getAppComponent());
+        mPresenter = new PreviousRideDetailPresenter(this, ((RidaApp) getActivity().getApplicationContext()).getAppComponent());
         mRidePointAdapter = new RidePointAdapter();
         mBinding.recyclerViewRides.setLayoutManager(new LinearLayoutManager(getActivity()));
         mBinding.recyclerViewRides.setItemAnimator(new DefaultItemAnimator());

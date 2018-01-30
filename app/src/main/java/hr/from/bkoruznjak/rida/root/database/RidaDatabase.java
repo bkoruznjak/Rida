@@ -20,13 +20,13 @@ import hr.from.bkoruznjak.rida.root.Constants;
         Ride.class,
         RidePoint.class
 }, version = 1)
-public abstract class RideDatabase extends RoomDatabase {
+public abstract class RidaDatabase extends RoomDatabase {
 
-    private static RideDatabase INSTANCE;
+    private static RidaDatabase INSTANCE;
 
-    public static RideDatabase getDatabase(Context context) {
+    public static RidaDatabase getDatabase(Context context) {
         if (INSTANCE == null) {
-            INSTANCE = Room.databaseBuilder(context, RideDatabase.class, Constants.DATABASE_NAME).build();
+            INSTANCE = Room.databaseBuilder(context, RidaDatabase.class, Constants.DATABASE_NAME).build();
         }
         return INSTANCE;
     }

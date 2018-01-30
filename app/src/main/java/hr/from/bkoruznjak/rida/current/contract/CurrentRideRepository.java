@@ -18,7 +18,11 @@ public interface CurrentRideRepository {
 
     void saveRidePoint(@NonNull RidePoint ridePoint);
 
+    long saveRidePointSync(@NonNull RidePoint ridePoint);
+
     void updateRidePoint(@NonNull RidePoint ridePoint);
+
+    void updateRidePointSync(@NonNull RidePoint ridePoint);
 
     interface OnDataSavedListener {
         void onSuccess(long id);

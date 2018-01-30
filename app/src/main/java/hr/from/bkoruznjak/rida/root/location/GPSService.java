@@ -15,8 +15,10 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import hr.from.bkoruznjak.rida.R;
+import hr.from.bkoruznjak.rida.current.CurrentRidePointUploadTask;
 import hr.from.bkoruznjak.rida.current.CurrentRideRoomRepository;
 import hr.from.bkoruznjak.rida.current.CurrentRideSession;
 import hr.from.bkoruznjak.rida.current.contract.CurrentRideRepository;
@@ -24,7 +26,9 @@ import hr.from.bkoruznjak.rida.current.model.Ride;
 import hr.from.bkoruznjak.rida.current.model.RidePoint;
 import hr.from.bkoruznjak.rida.main.MainActivity;
 import hr.from.bkoruznjak.rida.root.Constants;
-import hr.from.bkoruznjak.rida.root.RideApp;
+import hr.from.bkoruznjak.rida.root.RidaApp;
+import hr.from.bkoruznjak.rida.root.network.NetworkManager;
+import hr.from.bkoruznjak.rida.root.network.RidaWebAPI;
 
 import static hr.from.bkoruznjak.rida.root.Constants.SERVICE_NOTIFICATION_ID;
 
@@ -42,6 +46,11 @@ public class GPSService extends Service implements LocationProviderCallback, Cur
     CurrentRideSession currentRideSession;
     @Inject
     CurrentRideRoomRepository currentRideRoomRepository;
+    @Inject
+    NetworkManager networkManager;
+    @Inject
+    @Named("simpleWebApi")
+    RidaWebAPI webAPI;
     private boolean mIsRunning;
 
     public static GPSService getInstance() {
@@ -61,7 +70,7 @@ public class GPSService extends Service implements LocationProviderCallback, Cur
     @Override
     public void onCreate() {
         super.onCreate();
-        ((RideApp) getApplication()).getAppComponent().inject(this);
+        ((RidaApp) getApplication()).getAppComponent().inject(this);
         buildNotificationAndStartService();
     }
 
@@ -156,12 +165,8 @@ public class GPSService extends Service implements LocationProviderCallback, Cur
             ridePoint.longitude = Double.toString(location.getLongitude());
             ridePoint.status = currentRideSession.getStatus().name();
             ridePoint.time = currentRideSession.getCurrentTime();
-            currentRideRoomRepository.saveRidePoint(ridePoint);
+            new CurrentRidePointUploadTask(ridePoint, currentRideRoomRepository, networkManager, webAPI).execute();
         }
-
-        //check internet
-
-        //if we have internet publish to server
     }
 
     @Override

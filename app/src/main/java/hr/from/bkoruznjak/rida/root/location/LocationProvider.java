@@ -15,7 +15,7 @@ import com.google.android.gms.location.LocationServices;
 import java.util.ArrayList;
 import java.util.List;
 
-import hr.from.bkoruznjak.rida.root.RideApp;
+import hr.from.bkoruznjak.rida.root.RidaApp;
 
 
 /**
@@ -32,7 +32,7 @@ public class LocationProvider implements LocationListener, GoogleApiClient.Conne
     private List<LocationProviderCallback> mCallbackList;
     private LocationManager mLocationManager;
 
-    public LocationProvider(RideApp context, long gpsRefreshInterval) {
+    public LocationProvider(RidaApp context, long gpsRefreshInterval) {
         this.REFRESH_LOCATION_INTERVAL_TIME_IN_MILLIS = gpsRefreshInterval;
         mGoogleApiClient = new GoogleApiClient.Builder(context)
                 .addApi(LocationServices.API)

@@ -3,7 +3,7 @@ package hr.from.bkoruznjak.rida.root.location;
 import dagger.Module;
 import dagger.Provides;
 import hr.from.bkoruznjak.rida.root.AppScope;
-import hr.from.bkoruznjak.rida.root.RideApp;
+import hr.from.bkoruznjak.rida.root.RidaApp;
 
 
 /**
@@ -20,7 +20,7 @@ public class LocationModule {
 
     @AppScope
     @Provides
-    LocationProvider providesLocationProvider(RideApp context) {
+    LocationProvider providesLocationProvider(RidaApp context) {
         return new LocationProvider(context, 5000l); //5 seconds as per spec
     }
 

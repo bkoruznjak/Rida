@@ -5,12 +5,17 @@ import android.app.Application;
 import com.squareup.leakcanary.LeakCanary;
 
 import hr.from.bkoruznjak.rida.BuildConfig;
+import hr.from.bkoruznjak.rida.current.CurrentRideModule;
+import hr.from.bkoruznjak.rida.root.database.DatabaseModule;
+import hr.from.bkoruznjak.rida.root.location.LocationModule;
+import hr.from.bkoruznjak.rida.root.network.NetworkModule;
+import hr.from.bkoruznjak.rida.root.network.RidaWebAPI;
 
 /**
  * Created by bkoruznjak on 30/01/2018.
  */
 
-public class RideApp extends Application {
+public class RidaApp extends Application {
 
     private AppComponent mAppComponent;
 
@@ -30,6 +35,10 @@ public class RideApp extends Application {
 
         mAppComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
+                .networkModule(new NetworkModule(RidaWebAPI.BASE_URL))
+                .databaseModule(new DatabaseModule())
+                .locationModule(new LocationModule())
+                .currentRideModule(new CurrentRideModule())
                 .build();
     }
 

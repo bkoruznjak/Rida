@@ -12,17 +12,17 @@ import dagger.Provides;
 
 @Module
 public class AppModule {
-    private RideApp mApplication;
+    private RidaApp mApplication;
     private SharedPreferences mSharedPreferences;
 
-    public AppModule(RideApp context) {
+    public AppModule(RidaApp context) {
         this.mApplication = context;
         this.mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
     @Provides
     @AppScope
-    public RideApp providesApplication() {
+    public RidaApp providesApplication() {
         return this.mApplication;
     }
 

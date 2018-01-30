@@ -16,7 +16,7 @@ import hr.from.bkoruznjak.rida.R;
 import hr.from.bkoruznjak.rida.current.contract.CurrentRidePresenter;
 import hr.from.bkoruznjak.rida.current.contract.CurrentRideView;
 import hr.from.bkoruznjak.rida.databinding.FragmentCurrentRideBinding;
-import hr.from.bkoruznjak.rida.root.RideApp;
+import hr.from.bkoruznjak.rida.root.RidaApp;
 import hr.from.bkoruznjak.rida.root.location.GPSService;
 
 import static hr.from.bkoruznjak.rida.root.Constants.TRANSLATION_DISTANCE;
@@ -30,7 +30,7 @@ public class CurrentRideFragment extends Fragment implements CurrentRideView, Vi
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.fragment_current_ride, container, false);
-        mPresenter = new CurrentRidePresenterImpl(this, ((RideApp) getActivity().getApplicationContext()).getAppComponent());
+        mPresenter = new CurrentRidePresenterImpl(this, ((RidaApp) getActivity().getApplicationContext()).getAppComponent());
         setupListeners();
         return mBinding.getRoot();
     }

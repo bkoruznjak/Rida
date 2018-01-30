@@ -15,7 +15,7 @@ import hr.from.bkoruznjak.rida.current.model.Ride;
 import hr.from.bkoruznjak.rida.history.contract.PreviousRidePresenter;
 import hr.from.bkoruznjak.rida.history.contract.PreviousRideView;
 import hr.from.bkoruznjak.rida.root.AppComponent;
-import hr.from.bkoruznjak.rida.root.database.RideDatabase;
+import hr.from.bkoruznjak.rida.root.database.RidaDatabase;
 
 /**
  * Created by bkoruznjak on 30/01/2018.
@@ -24,7 +24,7 @@ import hr.from.bkoruznjak.rida.root.database.RideDatabase;
 public class PreviousRidesPresenterImpl implements PreviousRidePresenter, LifecycleOwner {
 
     @Inject
-    RideDatabase database;
+    RidaDatabase database;
     private PreviousRideView mPreviousRideView;
     private LifecycleRegistry mLifecycleRegistry;
 

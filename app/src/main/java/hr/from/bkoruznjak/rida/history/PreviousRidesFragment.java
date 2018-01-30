@@ -21,7 +21,7 @@ import hr.from.bkoruznjak.rida.databinding.FragmentPreviousRidesBinding;
 import hr.from.bkoruznjak.rida.history.contract.PreviousRidePresenter;
 import hr.from.bkoruznjak.rida.history.contract.PreviousRideView;
 import hr.from.bkoruznjak.rida.root.Constants;
-import hr.from.bkoruznjak.rida.root.RideApp;
+import hr.from.bkoruznjak.rida.root.RidaApp;
 
 public class PreviousRidesFragment extends Fragment implements PreviousRideView {
 
@@ -42,7 +42,7 @@ public class PreviousRidesFragment extends Fragment implements PreviousRideView 
     }
 
     private void init() {
-        mPresenter = new PreviousRidesPresenterImpl(this, ((RideApp) getActivity().getApplicationContext()).getAppComponent());
+        mPresenter = new PreviousRidesPresenterImpl(this, ((RidaApp) getActivity().getApplicationContext()).getAppComponent());
         mPreviousRideAdapter = new PreviousRideAdapterImpl(new WeakReference<>(this));
         mBinding.recyclerViewRides.setLayoutManager(new LinearLayoutManager(getActivity()));
         mBinding.recyclerViewRides.setItemAnimator(new DefaultItemAnimator());
