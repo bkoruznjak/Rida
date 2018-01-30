@@ -1,8 +1,7 @@
-package hr.from.bkoruznjak.rida.main;
+package hr.from.bkoruznjak.rida.current;
 
 import dagger.Module;
 import dagger.Provides;
-import hr.from.bkoruznjak.rida.current.CurrentRideSession;
 import hr.from.bkoruznjak.rida.root.AppScope;
 
 
@@ -11,7 +10,7 @@ import hr.from.bkoruznjak.rida.root.AppScope;
  */
 
 @Module
-public class RideModule {
+public class CurrentRideModule {
 
     @AppScope
     @Provides
