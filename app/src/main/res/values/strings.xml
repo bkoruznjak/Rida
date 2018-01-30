@@ -1,17 +1,52 @@
 <resources>
     <string name="app_name">Rida</string>
 
+    <!-- CURRENT RIDE -->
+    <string name="start_location">Start location</string>
+    <string name="hint_start_location">input start location</string>
+    <string name="end_location">End Location</string>
+    <string name="hint_end_location">input end location</string>
+    <string name="number_of_passengers">Number of passengers:</string>
+    <string name="action_start_ride">Start ride</string>
+    <string name="action_passengers_picked_up">Passengers picked up</string>
+    <string name="action_stop_over">Stop over</string>
+    <string name="action_end_ride">End ride</string>
+    <string name="action_continue_ride">Continue ride</string>
     <string name="dialog_no_gps_title">No GPS</string>
     <string name="dialog_no_gps_content">You currently do not have GPS turned on!\nIf you want to use this feature, proceed to the phone settings and turn it on</string>
     <string name="dialog_no_gps_confirm">Go to settings</string>
     <string name="dialog_no_gps_cancel">Cancel</string>
-    <string name="dialog_location_permission_title">Welcome to Rida</string>
+    <string name="dialog_location_permission_title">Welcome to Road Rage</string>
     <string name="dialog_location_permission_content">This application requires access to your devices location services to seamlessly perform all the tasks it needs.</string>
     <string name="dialog_confirmation">Ok</string>
     <string name="toast_insufficient_location_permission">The Application does not have sufficient permissions for location retrieval!</string>
     <string name="toast_failed_location_fetch">Location retrieval failed.</string>
+    <string name="toast_start_location_empty">Please input a start location</string>
+    <string name="toast_end_location_empty">Please input a end location</string>
     <string name="toast_error_while_saving_ride">Something went wrong, please try again.</string>
 
+    <string-array name="array_passenger_numbers">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+    </string-array>
 
     <!-- SIDE DRAWER -->
     <string name="edit_driver_info">edit driver info</string>
