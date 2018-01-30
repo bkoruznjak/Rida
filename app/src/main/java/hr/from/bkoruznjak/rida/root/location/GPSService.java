@@ -18,9 +18,9 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import hr.from.bkoruznjak.rida.R;
-import hr.from.bkoruznjak.rida.current.CurrentRidePointUploadTask;
 import hr.from.bkoruznjak.rida.current.CurrentRideRoomRepository;
 import hr.from.bkoruznjak.rida.current.CurrentRideSession;
+import hr.from.bkoruznjak.rida.current.RidePointUploadTask;
 import hr.from.bkoruznjak.rida.current.contract.CurrentRideRepository;
 import hr.from.bkoruznjak.rida.current.model.Ride;
 import hr.from.bkoruznjak.rida.current.model.RidePoint;
@@ -165,7 +165,7 @@ public class GPSService extends Service implements LocationProviderCallback, Cur
             ridePoint.longitude = Double.toString(location.getLongitude());
             ridePoint.status = currentRideSession.getStatus().name();
             ridePoint.time = currentRideSession.getCurrentTime();
-            new CurrentRidePointUploadTask(ridePoint, currentRideRoomRepository, networkManager, webAPI).execute();
+            new RidePointUploadTask(ridePoint, currentRideRoomRepository, networkManager, webAPI).execute();
         }
     }
 

@@ -8,4 +8,6 @@ import hr.from.bkoruznjak.rida.root.contract.RootPresenter;
 
 public interface MainPresenter extends RootPresenter {
     void handlePermissionResult(int requestCode, String[] permissions, int[] grantResults);
+
+    void scheduleUploadJob();
 }

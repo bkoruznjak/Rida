@@ -28,6 +28,9 @@ public interface RidePointDao {
     @Query("select * from RidePoint where IS_UPLOADED = 0")
     LiveData<List<RidePoint>> loadAllRidePointsPendingUpload();
 
+    @Query("select * from RidePoint where IS_UPLOADED = 0")
+    List<RidePoint> getAllRidePointsPendingUpload();
+
     @Insert(onConflict = REPLACE)
     long insertRidePoint(RidePoint RidePoint);
 

@@ -1,7 +1,13 @@
 package hr.from.bkoruznjak.rida.main;
 
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
+import android.util.Log;
+
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import hr.from.bkoruznjak.rida.R;
 import hr.from.bkoruznjak.rida.main.contract.MainPresenter;
@@ -17,6 +23,11 @@ import static hr.from.bkoruznjak.rida.root.Constants.LOCATION_PERMISSION_ID;
 
 public class MainPresenterImpl implements MainPresenter {
 
+    @Inject
+    JobScheduler jobScheduler;
+    @Inject
+    @Named("uploadJob")
+    JobInfo nonUploadedJob;
     private MainView mView;
 
     public MainPresenterImpl(@NonNull MainView mainView, @NonNull AppComponent appComponent) {
@@ -34,6 +45,8 @@ public class MainPresenterImpl implements MainPresenter {
         if (!mView.checkLocationPermission()) {
             mView.showLocationPermissionExplanation();
         }
+
+        scheduleUploadJob();
     }
 
     @Override
@@ -52,5 +65,12 @@ public class MainPresenterImpl implements MainPresenter {
             default:
                 break;
         }
+    }
+
+    @Override
+    public void scheduleUploadJob() {
+
+        int result = jobScheduler.schedule(nonUploadedJob);
+        Log.d("žžž", "job scheduled:" + result);
     }
 }

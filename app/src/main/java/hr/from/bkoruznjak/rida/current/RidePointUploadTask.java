@@ -18,7 +18,7 @@ import retrofit2.Response;
  * Created by bkoruznjak on 30/01/2018.
  */
 
-public class CurrentRidePointUploadTask extends AsyncTask<Void, Void, Integer> {
+public class RidePointUploadTask extends AsyncTask<Void, Void, Integer> {
 
     public static final int CODE_TASK_DONE_OK = 1;
     public static final int CODE_TASK_FAILED_NO_NET = 2;
@@ -29,10 +29,10 @@ public class CurrentRidePointUploadTask extends AsyncTask<Void, Void, Integer> {
     private NetworkManager mNetworkManager;
     private RidaWebAPI mWebAPI;
 
-    public CurrentRidePointUploadTask(@NonNull RidePoint ridePoint,
-                                      @NonNull CurrentRideRoomRepository roomRepository,
-                                      @NonNull NetworkManager networkManager,
-                                      @NonNull RidaWebAPI webAPI) {
+    public RidePointUploadTask(@NonNull RidePoint ridePoint,
+                               @NonNull CurrentRideRoomRepository roomRepository,
+                               @NonNull NetworkManager networkManager,
+                               @NonNull RidaWebAPI webAPI) {
         this.mRidePoint = ridePoint;
         this.mRoomRepository = roomRepository;
         this.mNetworkManager = networkManager;
