@@ -1,104 +1,95 @@
 package hr.from.bkoruznjak.rida.history;
 
-import android.content.Context;
-import android.net.Uri;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import java.lang.ref.WeakReference;
 
 import hr.from.bkoruznjak.rida.R;
+import hr.from.bkoruznjak.rida.current.model.Ride;
+import hr.from.bkoruznjak.rida.databinding.FragmentPreviousRidesBinding;
+import hr.from.bkoruznjak.rida.history.contract.PreviousRidePresenter;
+import hr.from.bkoruznjak.rida.history.contract.PreviousRideView;
+import hr.from.bkoruznjak.rida.root.RideApp;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link PreviousRidesFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link PreviousRidesFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class PreviousRidesFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class PreviousRidesFragment extends Fragment implements PreviousRideView {
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
+    private FragmentPreviousRidesBinding mBinding;
+    private PreviousRidePresenter mPresenter;
+    private PreviousRideAdapterImpl mPreviousRideAdapter;
 
     public PreviousRidesFragment() {
-        // Required empty public constructor
+
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PreviousRidesFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static PreviousRidesFragment newInstance(String param1, String param2) {
-        PreviousRidesFragment fragment = new PreviousRidesFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.fragment_previous_rides, container, false);
+        init();
+        return mBinding.getRoot();
+    }
+
+    private void init() {
+        mPresenter = new PreviousRidesPresenterImpl(this, ((RideApp) getActivity().getApplicationContext()).getAppComponent());
+        mPreviousRideAdapter = new PreviousRideAdapterImpl(new WeakReference<>(this));
+        mBinding.recyclerViewRides.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mBinding.recyclerViewRides.setItemAnimator(new DefaultItemAnimator());
+        mBinding.recyclerViewRides.setAdapter(mPreviousRideAdapter);
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public void onResume() {
+        super.onResume();
+        mPresenter.onResume();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_previous_rides, container, false);
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+    public void onDestroy() {
+        super.onDestroy();
+        mPresenter.onDestroy();
+        mPresenter = null;
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
+    public void addRide(@NonNull Ride ride) {
+        getActivity().runOnUiThread(() -> {
+            mPreviousRideAdapter.addSingle(ride);
+            mPreviousRideAdapter.notifyDataSetChanged();
+        });
     }
 
     @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
+    public void showNoRidesMessage() {
+        getActivity().runOnUiThread(() -> mBinding.textViewNoRidesToShow.setVisibility(View.VISIBLE));
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    @Override
+    public void hideNoRideMessage() {
+        getActivity().runOnUiThread(() -> mBinding.textViewNoRidesToShow.setVisibility(View.GONE));
+    }
+
+    @Override
+    public void goToRideDetails(long rideId) {
+        //todo
+    }
+
+    @Override
+    public void showToast(int messageResourceId) {
+        getActivity().runOnUiThread(() -> Toast.makeText(getActivity(), messageResourceId, Toast.LENGTH_SHORT).show());
+    }
+
+    @Override
+    public void goBack() {
+        getActivity().finish();
     }
 }

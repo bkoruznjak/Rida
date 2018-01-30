@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.view.ViewGroup;
 
 import hr.from.bkoruznjak.rida.current.CurrentRideFragment;
-import hr.from.bkoruznjak.rida.history.PreviousRidesFragment;
+import hr.from.bkoruznjak.rida.history.PreviousRidesRootFragment;
 
 /**
  * Created by bkoruznjak on 30/01/2018.
@@ -39,7 +39,7 @@ public class PageAdapter extends FragmentPagerAdapter {
             case PAGE_CURRENT_RIDE:
                 return new CurrentRideFragment();
             case PAGE_RIDE_HISTORY:
-                return new PreviousRidesFragment();
+                return new PreviousRidesRootFragment();
             default:
                 throw new IllegalStateException("Page not found");
         }
