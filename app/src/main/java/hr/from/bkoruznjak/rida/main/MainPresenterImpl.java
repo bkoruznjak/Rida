@@ -4,7 +4,6 @@ import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -69,8 +68,6 @@ public class MainPresenterImpl implements MainPresenter {
 
     @Override
     public void scheduleUploadJob() {
-
-        int result = jobScheduler.schedule(nonUploadedJob);
-        Log.d("žžž", "job scheduled:" + result);
+        jobScheduler.schedule(nonUploadedJob);
     }
 }

@@ -2,7 +2,6 @@ package hr.from.bkoruznjak.rida.current;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import hr.from.bkoruznjak.rida.current.contract.CurrentRideRepository;
 import hr.from.bkoruznjak.rida.current.model.Ride;
@@ -26,7 +25,6 @@ public class CurrentRideRoomRepository implements CurrentRideRepository {
         new Thread(() -> {
             long rideId = mDatabase.rideDao().insertRide(currentRide);
             currentRide.id = rideId;
-            Log.d("žžž", "ride saved:" + currentRide.toString());
             if (callback != null) {
                 callback.onSuccess(rideId);
             }
@@ -43,7 +41,6 @@ public class CurrentRideRoomRepository implements CurrentRideRepository {
         new Thread(() -> {
             long ridePointId = mDatabase.ridePointDao().insertRidePoint(ridePoint);
             ridePoint.id = ridePointId;
-            Log.d("žžž", "ridepoint saved:" + ridePoint.toString());
         }).start();
     }
 
