@@ -38,10 +38,7 @@ public class CurrentRideRoomRepository implements CurrentRideRepository {
 
     @Override
     public void saveRidePoint(@NonNull RidePoint ridePoint) {
-        new Thread(() -> {
-            long ridePointId = mDatabase.ridePointDao().insertRidePoint(ridePoint);
-            ridePoint.id = ridePointId;
-        }).start();
+        new Thread(() -> mDatabase.ridePointDao().insertRidePoint(ridePoint)).start();
     }
 
     /**

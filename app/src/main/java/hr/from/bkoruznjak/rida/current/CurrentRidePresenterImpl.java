@@ -10,7 +10,6 @@ import javax.inject.Inject;
 
 import hr.from.bkoruznjak.rida.R;
 import hr.from.bkoruznjak.rida.current.contract.CurrentRidePresenter;
-import hr.from.bkoruznjak.rida.current.contract.CurrentRideRepository;
 import hr.from.bkoruznjak.rida.current.contract.CurrentRideView;
 import hr.from.bkoruznjak.rida.current.model.RideStatus;
 import hr.from.bkoruznjak.rida.root.AppComponent;
@@ -30,7 +29,6 @@ public class CurrentRidePresenterImpl implements CurrentRidePresenter, Lifecycle
     @Inject
     CurrentRideSession currentRideSession;
     private LifecycleRegistry mLifecycleRegistry;
-    private CurrentRideRepository mCurrentRideRepository;
     private CurrentRideView mView;
     private boolean mSecondaryButtonVisible;
 
@@ -39,7 +37,6 @@ public class CurrentRidePresenterImpl implements CurrentRidePresenter, Lifecycle
         appComponent.inject(this);
         this.mLifecycleRegistry = new LifecycleRegistry(this);
         this.mLifecycleRegistry.markState(Lifecycle.State.INITIALIZED);
-        mCurrentRideRepository = new CurrentRideRoomRepository(database);
     }
 
     @Override

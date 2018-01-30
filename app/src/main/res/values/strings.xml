@@ -20,11 +20,8 @@
     <string name="dialog_location_permission_content">This application requires access to your devices location services to seamlessly perform all the tasks it needs.</string>
     <string name="dialog_confirmation">Ok</string>
     <string name="dialog_cancel">Cancel</string>
-    <string name="toast_insufficient_location_permission">The Application does not have sufficient permissions for location retrieval!</string>
-    <string name="toast_failed_location_fetch">Location retrieval failed.</string>
     <string name="toast_start_location_empty">Please input a start location</string>
     <string name="toast_end_location_empty">Please input a end location</string>
-    <string name="toast_error_while_saving_ride">Something went wrong, please try again.</string>
     <string name="notification_ongoing_ride">ongoing ride</string>
 
     <string-array name="array_passenger_numbers">
@@ -51,7 +48,6 @@
     </string-array>
 
     <!-- SIDE DRAWER -->
-    <string name="edit_driver_info">edit driver info</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="name">Name: %s</string>
