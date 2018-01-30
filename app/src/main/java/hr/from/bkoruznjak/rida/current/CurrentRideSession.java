@@ -72,8 +72,8 @@ public class CurrentRideSession {
      */
     public void purgeSession() {
         this.mDatabaseId = NO_DATABASE_ID_ASSIGNED;
-        this.mStartLocation = "trnsko";
-        this.mEndLocation = "siget";
+        this.mStartLocation = "";
+        this.mEndLocation = "";
         this.mNumberOfPassengers = 1;
         this.mStatus = RideStatus.IDLE;
     }
