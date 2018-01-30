@@ -28,6 +28,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewEndLocationTitle" />
 
+        <View
+            android:id="@+id/accentBackground"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerViewRides"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/textNoRidePointsToShow"
             android:layout_width="wrap_content"
@@ -46,7 +56,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textViewTimeTitle"
+            android:id="@+id/textViewBookingIdTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -64,11 +74,11 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:textColor="@color/colorPrimaryDark"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewTimeTitle"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewBookingIdTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/textViewTimeTitle"
-            app:layout_constraintTop_toTopOf="@+id/textViewTimeTitle" />
+            app:layout_constraintStart_toEndOf="@+id/textViewBookingIdTitle"
+            app:layout_constraintTop_toTopOf="@+id/textViewBookingIdTitle" />
 
         <TextView
             android:id="@+id/textViewPassengersTitle"
@@ -80,7 +90,7 @@
             android:textColor="@color/colorPrimaryDark"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTimeTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewBookingIdTitle" />
 
         <TextView
             android:id="@+id/textViewPassengersValue"
