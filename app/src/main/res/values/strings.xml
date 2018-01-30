@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">Rida</string>
+
+    <string name="dialog_no_gps_title">No GPS</string>
+    <string name="dialog_no_gps_content">You currently do not have GPS turned on!\nIf you want to use this feature, proceed to the phone settings and turn it on</string>
+    <string name="dialog_no_gps_confirm">Go to settings</string>
+    <string name="dialog_no_gps_cancel">Cancel</string>
+    <string name="dialog_location_permission_title">Welcome to Rida</string>
+    <string name="dialog_location_permission_content">This application requires access to your devices location services to seamlessly perform all the tasks it needs.</string>
+    <string name="dialog_confirmation">Ok</string>
+    <string name="toast_insufficient_location_permission">The Application does not have sufficient permissions for location retrieval!</string>
+    <string name="toast_failed_location_fetch">Location retrieval failed.</string>
+    <string name="toast_error_while_saving_ride">Something went wrong, please try again.</string>
+
+
+    <!-- SIDE DRAWER -->
+    <string name="edit_driver_info">edit driver info</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <!-- BOTTOM NAVIGATION -->
+    <string name="current">current</string>
+    <string name="history">history</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>
