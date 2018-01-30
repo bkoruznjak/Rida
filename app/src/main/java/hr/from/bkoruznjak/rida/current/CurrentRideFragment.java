@@ -17,6 +17,7 @@ import hr.from.bkoruznjak.rida.current.contract.CurrentRidePresenter;
 import hr.from.bkoruznjak.rida.current.contract.CurrentRideView;
 import hr.from.bkoruznjak.rida.databinding.FragmentCurrentRideBinding;
 import hr.from.bkoruznjak.rida.root.RideApp;
+import hr.from.bkoruznjak.rida.root.location.GPSService;
 
 import static hr.from.bkoruznjak.rida.root.Constants.TRANSLATION_DISTANCE;
 
@@ -161,11 +162,11 @@ public class CurrentRideFragment extends Fragment implements CurrentRideView, Vi
 
     @Override
     public void startGPSService() {
-        //todo
+        GPSService.getInstance().start(getActivity());
     }
 
     @Override
     public void stopGPSService() {
-        //todo
+        GPSService.getInstance().stop(getActivity());
     }
 }

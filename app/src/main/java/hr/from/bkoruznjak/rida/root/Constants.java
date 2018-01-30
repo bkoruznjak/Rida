@@ -15,11 +15,11 @@ public interface Constants {
     int LOCATION_PERMISSION_ID = 1337;
     int SERVICE_NOTIFICATION_ID = 1338;
     //NOTIFICATIONS
-    String NOTIFICATION_CHANNEL_DESCRIPTION = "ride_app_notifications";
-    String RIDE_NOTIFICATION_CHANNEL_ID = "ongoing_ride_notification";
-    String RIDE_NOTIFICATION_CHANNEL_NAME = "ride_location_notifications";
+    String NOTIFICATION_CHANNEL_DESCRIPTION = "rida_app_notifications";
+    String RIDE_NOTIFICATION_CHANNEL_ID = "ongoing_rida_notification";
+    String RIDE_NOTIFICATION_CHANNEL_NAME = "rida_location_notifications";
     //DATABASE
-    String DATABASE_NAME = "ride.db";
+    String DATABASE_NAME = "rida.db";
     //ANIMATIONS
     int TRANSLATION_DISTANCE = 200;
     long NO_ANIMATION = 0L;

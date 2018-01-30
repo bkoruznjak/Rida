@@ -3,6 +3,7 @@ package hr.from.bkoruznjak.rida.current;
 import dagger.Module;
 import dagger.Provides;
 import hr.from.bkoruznjak.rida.root.AppScope;
+import hr.from.bkoruznjak.rida.root.database.RideDatabase;
 
 
 /**
@@ -16,6 +17,12 @@ public class CurrentRideModule {
     @Provides
     public CurrentRideSession provideCurrentRideSession() {
         return new CurrentRideSession();
+    }
+
+    @AppScope
+    @Provides
+    public CurrentRideRoomRepository provideCurrentRideRoomRepository(RideDatabase database) {
+        return new CurrentRideRoomRepository(database);
     }
 
 }

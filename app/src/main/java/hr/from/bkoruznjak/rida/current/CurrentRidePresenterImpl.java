@@ -10,10 +10,12 @@ import javax.inject.Inject;
 
 import hr.from.bkoruznjak.rida.R;
 import hr.from.bkoruznjak.rida.current.contract.CurrentRidePresenter;
+import hr.from.bkoruznjak.rida.current.contract.CurrentRideRepository;
 import hr.from.bkoruznjak.rida.current.contract.CurrentRideView;
 import hr.from.bkoruznjak.rida.current.model.RideStatus;
 import hr.from.bkoruznjak.rida.root.AppComponent;
 import hr.from.bkoruznjak.rida.root.Constants;
+import hr.from.bkoruznjak.rida.root.database.RideDatabase;
 
 import static hr.from.bkoruznjak.rida.root.Constants.NO_ANIMATION;
 
@@ -23,10 +25,12 @@ import static hr.from.bkoruznjak.rida.root.Constants.NO_ANIMATION;
 
 public class CurrentRidePresenterImpl implements CurrentRidePresenter, LifecycleOwner {
 
-    private final String LOG_TAG = "Ride_Pres";
+    @Inject
+    RideDatabase database;
     @Inject
     CurrentRideSession currentRideSession;
     private LifecycleRegistry mLifecycleRegistry;
+    private CurrentRideRepository mCurrentRideRepository;
     private CurrentRideView mView;
     private boolean mSecondaryButtonVisible;
 
@@ -35,6 +39,7 @@ public class CurrentRidePresenterImpl implements CurrentRidePresenter, Lifecycle
         appComponent.inject(this);
         this.mLifecycleRegistry = new LifecycleRegistry(this);
         this.mLifecycleRegistry.markState(Lifecycle.State.INITIALIZED);
+        mCurrentRideRepository = new CurrentRideRoomRepository(database);
     }
 
     @Override
@@ -64,6 +69,7 @@ public class CurrentRidePresenterImpl implements CurrentRidePresenter, Lifecycle
                 break;
             case PASSENGER_PICKED_UP:
                 currentRideSession.setStatus(RideStatus.IDLE);
+                mView.stopGPSService();
                 break;
             default:
                 throw new IllegalArgumentException("Invalid ride status");
@@ -103,6 +109,7 @@ public class CurrentRidePresenterImpl implements CurrentRidePresenter, Lifecycle
         currentRideSession.setNumberOfPassengers(Integer.valueOf(mView.getNumberOfPassengers()));
         currentRideSession.setStatus(RideStatus.STARTED);
 
+        mView.startGPSService();
     }
 
     private void determineSecondaryActionButtonVisiblity(CurrentRideSession rideSession) {
@@ -112,7 +119,7 @@ public class CurrentRidePresenterImpl implements CurrentRidePresenter, Lifecycle
                 break;
             default:
                 mSecondaryButtonVisible = false;
-                mView.hideSecondaryActionButton(NO_ANIMATION);
+                mView.hideSecondaryActionButton(Constants.NO_ANIMATION);
                 break;
         }
     }
