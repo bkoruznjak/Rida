@@ -59,7 +59,9 @@
 
     <!-- RIDE HISTORY -->
     <string name="you_have_no_rides_to_show_get_to_work">You have no rides to show!\nGet to work!!!</string>
+    <string name="you_have_no_ride_points_to_show">It appears you have no ride detail info\nMust have been a super short ride!!!</string>
     <string name="booking_id_title">Booking id:</string>
+    <string name="number_of_passengers_title">Number of passengers:</string>
     <string name="start_title">Start:</string>
     <string name="stop_title">Stop:</string>
     <string name="start_location_title">Start location:</string>

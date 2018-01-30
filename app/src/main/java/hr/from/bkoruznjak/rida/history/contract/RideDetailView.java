@@ -26,6 +26,9 @@ public interface RideDetailView extends RootView {
     void setBookingId(@NonNull String bookingId);
 
     @MainThread
+    void setNumberOfPassengers(@NonNull String numberOfPassengers);
+
+    @MainThread
     void setStartLocation(@NonNull String startLocation);
 
     @MainThread

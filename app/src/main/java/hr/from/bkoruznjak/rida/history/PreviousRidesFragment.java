@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
@@ -19,6 +20,7 @@ import hr.from.bkoruznjak.rida.current.model.Ride;
 import hr.from.bkoruznjak.rida.databinding.FragmentPreviousRidesBinding;
 import hr.from.bkoruznjak.rida.history.contract.PreviousRidePresenter;
 import hr.from.bkoruznjak.rida.history.contract.PreviousRideView;
+import hr.from.bkoruznjak.rida.root.Constants;
 import hr.from.bkoruznjak.rida.root.RideApp;
 
 public class PreviousRidesFragment extends Fragment implements PreviousRideView {
@@ -80,7 +82,15 @@ public class PreviousRidesFragment extends Fragment implements PreviousRideView 
 
     @Override
     public void goToRideDetails(long rideId) {
-        //todo
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        PreviousRideDetailFragment detailFragment = new PreviousRideDetailFragment();
+        Bundle args = new Bundle();
+        args.putLong(Constants.KEY_BUNDLE_RIDE_ID, rideId);
+        detailFragment.setArguments(args);
+        fragmentTransaction.replace(R.id.fragmentRootLayout, detailFragment);
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
     @Override

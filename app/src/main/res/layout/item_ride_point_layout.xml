@@ -19,29 +19,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageViewDetails"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
-            android:adjustViewBounds="true"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewLongitudeTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_ride_details" />
-
         <TextView
             android:id="@+id/textViewTimeTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="@string/booking_id_title"
+            android:text="@string/time_title"
             android:textColor="@color/textWhite"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textViewLatitudeTitle"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/textViewTimeValue"
@@ -49,12 +39,12 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:textColor="@color/textWhite"
-            app:layout_constraintEnd_toStartOf="@+id/imageViewDetails"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewTimeTitle"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/textViewTimeTitle"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/textViewTimeTitle" />
 
         <TextView
             android:id="@+id/textViewLatitudeTitle"
@@ -62,9 +52,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="@string/start_title"
+            android:text="@string/latitude_title"
             android:textColor="@color/textWhite"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textViewLongitudeTitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewTimeTitle" />
 
@@ -74,24 +65,23 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:textColor="@color/textWhite"
-            app:layout_constraintEnd_toStartOf="@+id/imageViewDetails"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewLatitudeTitle"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/textViewLatitudeTitle"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTimeValue" />
+            app:layout_constraintTop_toTopOf="@+id/textViewLatitudeTitle" />
 
         <TextView
             android:id="@+id/textViewLongitudeTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="@string/stop_title"
+            android:text="@string/longitude_title"
             android:textColor="@color/textWhite"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/textViewStatusTitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewLatitudeTitle" />
 
@@ -101,12 +91,40 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:textColor="@color/textWhite"
             app:layout_constraintBottom_toBottomOf="@+id/textViewLongitudeTitle"
-            app:layout_constraintEnd_toStartOf="@+id/imageViewDetails"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/textViewLongitudeTitle"
-            app:layout_constraintTop_toBottomOf="@+id/textViewLatitudeValue" />
+            app:layout_constraintTop_toTopOf="@+id/textViewLongitudeTitle" />
+
+        <TextView
+            android:id="@+id/textViewStatusTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/status_title"
+            android:textColor="@color/textWhite"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewLongitudeTitle" />
+
+        <TextView
+            android:id="@+id/textViewStatusValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/textWhite"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewStatusTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textViewStatusTitle"
+            app:layout_constraintTop_toTopOf="@+id/textViewStatusTitle" />
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>
+
+

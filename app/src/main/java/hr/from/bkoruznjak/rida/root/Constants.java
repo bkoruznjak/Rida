@@ -11,6 +11,7 @@ public interface Constants {
     //SHARED PREFERENCES
     long NO_CURRENT_RIDE = -1;
     String KEY_CURRENT_RIDE_ID = "key.current.ride.id";
+    String KEY_BUNDLE_RIDE_ID = "rideId";
     //PERMISSIONS
     int LOCATION_PERMISSION_ID = 1337;
     int SERVICE_NOTIFICATION_ID = 1338;
