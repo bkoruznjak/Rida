@@ -9,6 +9,7 @@ import hr.from.bkoruznjak.rida.main.MainPresenterImpl;
 import hr.from.bkoruznjak.rida.root.database.DatabaseModule;
 import hr.from.bkoruznjak.rida.root.location.GPSService;
 import hr.from.bkoruznjak.rida.root.location.LocationModule;
+import hr.from.bkoruznjak.rida.root.network.NetworkModule;
 
 /**
  * Created by bkoruznjak on 30/01/2018.
@@ -16,6 +17,7 @@ import hr.from.bkoruznjak.rida.root.location.LocationModule;
 
 @AppScope
 @Component(modules = {AppModule.class,
+        NetworkModule.class,
         LocationModule.class,
         DatabaseModule.class,
         CurrentRideModule.class})
