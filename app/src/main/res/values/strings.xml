@@ -24,7 +24,7 @@
     <string name="toast_start_location_empty">Please input a start location</string>
     <string name="toast_end_location_empty">Please input a end location</string>
     <string name="toast_error_while_saving_ride">Something went wrong, please try again.</string>
-    <string name="notification_ongoing_ride">ongoing ride: %d</string>
+    <string name="notification_ongoing_ride">ongoing ride</string>
 
     <string-array name="array_passenger_numbers">
         <item>1</item>

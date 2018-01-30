@@ -97,7 +97,7 @@ public class GPSService extends Service implements LocationProviderCallback, Cur
                 new NotificationCompat.Builder(this, Constants.RIDE_NOTIFICATION_CHANNEL_ID)
                         .setSmallIcon(R.drawable.ic_app_notification)
                         .setContentTitle(getString(R.string.app_name))
-                        .setContentText(getString(R.string.notification_ongoing_ride, currentRideSession.getDatabaseId()))
+                        .setContentText(getString(R.string.notification_ongoing_ride))
                         .setAutoCancel(true)
                         .setContentIntent(resultPendingIntent)
                         .setOngoing(true);
