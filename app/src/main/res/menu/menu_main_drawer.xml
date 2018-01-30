@@ -5,8 +5,23 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/nav_edit_driver_info"
-            android:icon="@drawable/ic_driver_info"
-            android:title="@string/edit_driver_info" />
+            android:id="@+id/nav_edit_driver_name"
+            android:icon="@drawable/ic_driver_profile"
+            android:title="@string/name" />
+
+        <item
+            android:id="@+id/nav_edit_driver_surname"
+            android:icon="@drawable/ic_minus_sign_in_a_circle"
+            android:title="@string/surname" />
+
+        <item
+            android:id="@+id/nav_edit_driver_age"
+            android:icon="@drawable/ic_minus_sign_in_a_circle"
+            android:title="@string/age" />
+
+        <item
+            android:id="@+id/nav_edit_driver_license"
+            android:icon="@drawable/ic_license_plate"
+            android:title="@string/license" />
     </group>
 </menu>
