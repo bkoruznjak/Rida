@@ -1,6 +1,7 @@
 package hr.from.bkoruznjak.rida.main.contract;
 
 import android.support.annotation.MainThread;
+import android.support.annotation.NonNull;
 
 import hr.from.bkoruznjak.rida.root.contract.RootView;
 
@@ -20,10 +21,17 @@ public interface MainView extends RootView {
     void setupNavigationDrawer();
 
     @MainThread
-    void setupDriverInfo(int resourceId);
+    void loadDriverInfo(int profilePictureResourceId,
+                        @NonNull String name,
+                        @NonNull String surname,
+                        @NonNull String age,
+                        @NonNull String license);
 
     @MainThread
     void showLocationPermissionExplanation();
+
+    @MainThread
+    void showEditProfileDialog();
 
     @MainThread
     void showNoGpsAlert();

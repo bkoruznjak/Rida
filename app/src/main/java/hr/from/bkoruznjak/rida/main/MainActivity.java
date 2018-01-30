@@ -16,8 +16,10 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -141,13 +143,20 @@ public class MainActivity extends AppCompatActivity implements MainView, Navigat
 
     @MainThread
     @Override
-    public void setupDriverInfo(int resourceId) {
+    public void loadDriverInfo(int profilePictureResourceId, @NonNull String name, @NonNull String surname, @NonNull String age, @NonNull String license) {
         runOnUiThread(() -> {
             View headerView = mBinding.navView.getHeaderView(0);
             ImageView image = headerView.findViewById(R.id.imageViewProfilePic);
-            Glide.with(this).load(resourceId).apply(RequestOptions.circleCropTransform()).into(image);
+            Glide.with(this).load(profilePictureResourceId).apply(RequestOptions.circleCropTransform()).into(image);
+            headerView.findViewById(R.id.floatingActionButtonEditProfile).setOnClickListener((View v) -> mPresenter.editProfileClicked());
+
+            mBinding.navView.getMenu().findItem(R.id.nav_edit_driver_name).setTitle(getString(R.string.name, name));
+            mBinding.navView.getMenu().findItem(R.id.nav_edit_driver_surname).setTitle(getString(R.string.surname, surname));
+            mBinding.navView.getMenu().findItem(R.id.nav_edit_driver_age).setTitle(getString(R.string.age, age));
+            mBinding.navView.getMenu().findItem(R.id.nav_edit_driver_license).setTitle(getString(R.string.license, license));
         });
     }
+
 
     @MainThread
     @Override
@@ -157,6 +166,31 @@ public class MainActivity extends AppCompatActivity implements MainView, Navigat
             alertBuilder.setTitle(R.string.dialog_location_permission_title);
             alertBuilder.setMessage(R.string.dialog_location_permission_content);
             alertBuilder.setPositiveButton(R.string.dialog_confirmation, (DialogInterface dialog, int which) -> requestLocationPermission());
+            alertBuilder.setCancelable(false);
+            android.app.AlertDialog alertDialog = alertBuilder.create();
+            alertDialog.show();
+        });
+    }
+
+    @Override
+    public void showEditProfileDialog() {
+        runOnUiThread(() -> {
+            android.app.AlertDialog.Builder alertBuilder = new android.app.AlertDialog.Builder(this);
+            LayoutInflater layoutInflater = getLayoutInflater();
+            final View dialogBody = layoutInflater.inflate(R.layout.dialog_edit_profile, null);
+            final EditText name = dialogBody.findViewById(R.id.editTextName);
+            final EditText surname = dialogBody.findViewById(R.id.editTextSurname);
+            final EditText age = dialogBody.findViewById(R.id.editTextAge);
+            final EditText license = dialogBody.findViewById(R.id.editTextLicense);
+            alertBuilder.setView(dialogBody);
+            alertBuilder.setTitle(R.string.dialog_edit_profile);
+            alertBuilder.setPositiveButton(R.string.dialog_confirmation, (DialogInterface dialog, int which) -> {
+                mPresenter.updateDriverInfo(name.getText().toString(),
+                        surname.getText().toString(),
+                        age.getText().toString(),
+                        license.getText().toString());
+            });
+            alertBuilder.setNeutralButton(R.string.dialog_cancel, (DialogInterface dialog, int which) -> dialog.dismiss());
             alertBuilder.setCancelable(false);
             android.app.AlertDialog alertDialog = alertBuilder.create();
             alertDialog.show();

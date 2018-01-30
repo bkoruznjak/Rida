@@ -19,6 +19,7 @@
     <string name="dialog_location_permission_title">Welcome to Rida</string>
     <string name="dialog_location_permission_content">This application requires access to your devices location services to seamlessly perform all the tasks it needs.</string>
     <string name="dialog_confirmation">Ok</string>
+    <string name="dialog_cancel">Cancel</string>
     <string name="toast_insufficient_location_permission">The Application does not have sufficient permissions for location retrieval!</string>
     <string name="toast_failed_location_fetch">Location retrieval failed.</string>
     <string name="toast_start_location_empty">Please input a start location</string>
@@ -53,10 +54,11 @@
     <string name="edit_driver_info">edit driver info</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="name">Name:</string>
-    <string name="surname">Surname:</string>
-    <string name="age">Age:</string>
-    <string name="license">License:</string>
+    <string name="name">Name: %s</string>
+    <string name="surname">Surname: %s</string>
+    <string name="age">Age: %s</string>
+    <string name="license">License: %s</string>
+    <string name="dialog_edit_profile">Edit driver info</string>
 
     <!-- BOTTOM NAVIGATION -->
     <string name="current">current</string>
